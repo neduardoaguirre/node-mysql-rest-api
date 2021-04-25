@@ -1,11 +1,15 @@
 const express = require('express');
+const database = require('./config/database');
 
 const app = express();
 
-app.get('/api', (req, res) => {
-  res.json({ success: 1, message: 'This is resp api working' });
-});
+database
+  .authenticate()
+  .then(() => console.log('Database connected'))
+  .catch((error) => console.log(error));
 
-app.listen(4000, () => {
-  console.log('Server running');
+const port = process.env.PORT || 4000;
+
+app.listen(port, () => {
+  console.log(`The server is running on port ${port}`);
 });
