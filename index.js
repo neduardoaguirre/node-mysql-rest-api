@@ -1,14 +1,13 @@
 const express = require('express');
-const database = require('./config/database');
+const connectDB = require('./config/connectDB');
 
 const app = express();
-
-database
-  .authenticate()
-  .then(() => console.log('Database connected'))
-  .catch((error) => console.log(error));
+connectDB();
+app.use(express.json({ extended: true }));
 
 const port = process.env.PORT || 4000;
+
+app.use('/api/users', require('./routes/users'));
 
 app.listen(port, () => {
   console.log(`The server is running on port ${port}`);
