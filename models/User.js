@@ -3,8 +3,8 @@ const { Sequelize } = require('sequelize');
 
 const User = database.define('users', {
   id: {
-    type: Sequelize.UUID,
-    defaultValue: Sequelize.UUIDV4,
+    type: Sequelize.STRING,
+    defaultValue: Date.now(),
     primaryKey: true,
   },
   name: {
