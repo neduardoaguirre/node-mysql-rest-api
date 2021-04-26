@@ -2,6 +2,7 @@ const User = require('../models/User');
 const bcryptjs = require('bcryptjs');
 const { validationResult } = require('express-validator');
 const jwt = require('jsonwebtoken');
+const { _attributes } = require('../config/databaseConfig');
 
 exports.authenticateUser = async (req, res) => {
   const errors = validationResult(req);
@@ -43,7 +44,10 @@ exports.authenticateUser = async (req, res) => {
 
 exports.authenticatedUser = async (req, res) => {
   try {
-    const user = await User.findById(req.user.id).select('-password');
+    const user = await User.findByPk(req.user.id, {
+      attributes: ['id', 'name', 'email'],
+    });
+    console.log(user);
     res.json({ user });
   } catch (error) {
     console.log(error);
