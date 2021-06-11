@@ -62,9 +62,9 @@ You will know server is running by checking the output of the command `npm run d
 The server is running on port 4000
 Executing (default): SELECT 1+1 AS result
 Connection has been established successfully.
-Executing (default): CREATE TABLE IF NOT EXISTS `users` (`id` CHAR(36) BINARY , `name` VARCHAR(255), `email` VARCHAR(255) UNIQUE, `password` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB;
+Executing (default): CREATE TABLE IF NOT EXISTS `users` (`id` INTEGER auto_increment , `name` VARCHAR(255), `email` VARCHAR(255) UNIQUE, `password` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB;
 Executing (default): SHOW INDEX FROM `users`
-Executing (default): CREATE TABLE IF NOT EXISTS `customers` (`id` CHAR(36) BINARY , `firstName` VARCHAR(255), `lastName` VARCHAR(255), `email` VARCHAR(255) UNIQUE, `document` VARCHAR(255) UNIQUE, `address` VARCHAR(255), `createdBy` CHAR(36) BINARY, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB;
+Executing (default): CREATE TABLE IF NOT EXISTS `customers` (`id` INTEGER auto_increment , `firstName` VARCHAR(255), `lastName` VARCHAR(255), `email` VARCHAR(255) UNIQUE, `document` VARCHAR(255) UNIQUE, `address` VARCHAR(255), `createdBy` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB;
 Executing (default): SHOW INDEX FROM `customers`
 All models were synchronized successfully.
 ```
