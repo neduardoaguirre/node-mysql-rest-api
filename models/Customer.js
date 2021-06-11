@@ -4,8 +4,8 @@ const User = require('./User');
 
 const Customer = database.define('customer', {
   id: {
-    type: DataTypes.UUID,
-    defaultValue: Sequelize.UUIDV4,
+    type: DataTypes.INTEGER,
+    autoIncrement: true,
     primaryKey: true,
   },
   firstName: {
@@ -36,7 +36,7 @@ const Customer = database.define('customer', {
     trim: true,
   },
   createdBy: {
-    type: DataTypes.UUID,
+    type: DataTypes.INTEGER,
   },
 });
 
